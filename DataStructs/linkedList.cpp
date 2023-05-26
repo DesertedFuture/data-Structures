@@ -1,25 +1,5 @@
 // Scott Snyder
-/*
-node:
-	element
-	pointer to node
-*/
-
-/*
-operations:
-insertion
-search element in linked list
-	iterative
-	recursive
-reverse linked list
-deletion:
-	given key
-	deleting key at given postion
-delete linked list
-get nth node
-nth node from end of linked list
-*/
-
+//Basic operations:	push	append	find	delete	reverse length
 #include <iostream>
 using namespace std;
 
