@@ -22,7 +22,7 @@ void postOrder(treeNode *n){
 	//right
 	//center
 	if(n->left != NULL){
-		postOrder(n->left);
+		postOrder(n->left); 
 	}
 	if(n->right != NULL){
 		postOrder(n->right);
@@ -75,7 +75,12 @@ void insert(treeNode *&n, int val){
 	}
 
 }
+/*
+how to find place for insertion
 
+
+
+*/
 int main(int argc, char const *argv[])
 {
 	treeNode* head = new treeNode();
@@ -83,6 +88,11 @@ int main(int argc, char const *argv[])
 	insert(head, 2);
 	insert(head,3);
 	insert(head,4);
+	insert(head,5);
+	insert(head,6);
+	insert(head,7);
+	insert(head,8);
+	insert(head,9);
 
 	std::cout<<"Pre-order: center, left, right\n";
 	preOrder(head);
