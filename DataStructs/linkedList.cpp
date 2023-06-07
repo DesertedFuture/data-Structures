@@ -97,7 +97,6 @@ void deletePosition(Node *&n, int pos){
 	if(pos == 1){
 		Node* temp = n;
 		n = temp->next;
-		return
 	}
 	int count = pos;
 	if(pos > findLength(n)){
@@ -141,6 +140,8 @@ int main(int argc, char const *argv[])
 
 	deleteKey(head, 2);
 	printList(head);
+
+	Node** temp;
 
 	return 0;
 }
