@@ -43,19 +43,21 @@ int right(int index) {
 }
 
 void maxHeapify(std::vector<int> &a, int index){
+	//std::cout<<"Index: " << index << std::endl;
+	//print(a);
 	//we assume there is error with index but that left and right are max heaps already
 	//this is just supposed to float down a value
 	int l = left(index); //left node
 	int r = right(index); //right node
 	int largest;
 
-	if(l <= a.size() && a[l] > a[index] ){
+	if(l < a.size() && a[l] > a[index] ){
 		largest = l;
 	} else {
 		largest = index;
 	}
 
-	if(r <= a.size()  && a[r] > a[largest]){
+	if(r < a.size()  && a[r] > a[largest]){
 		largest = r;
 	}
 	if(largest != index){
@@ -67,15 +69,19 @@ void maxHeapify(std::vector<int> &a, int index){
 }
 
 void buildMaxHeap(std::vector<int> &a){
-	int temp = height(a);
-	for(int i = temp; i >= 0; i--){
-		std::cout<<i<<std::endl;
-		maxHeapify(a,i);
+	for(int i = floor(a.size()/2)-1; i >= 0; --i){
+		//std::cout<< "I: " << i << std::endl;
+		maxHeapify(a, i);
 	}
-	return;
 }
 
-void heapSort(){}
+void heapSort(std::vector<int> &a){
+	buildMaxHeap(a);
+	for (int i = a.size()-1; i >= 0; i--) {
+        std::swap(a[0], a[i]);
+        maxHeapify(a, 0);
+    }
+}
 
 void maxHeapInsert(){}
 
@@ -88,23 +94,26 @@ void heapMaximum(){}
 
 int main(int argc, char const *argv[])
 {
-
-	for(int i = 0; i < 20; i++){
-		std::cout<< "i: " << i << " : " << right(i)<< " \n";
-
-	}
-	std::cout<<std::endl;
 	std::vector<int> arr = {16,4,10,14,7,9,3,2,8,1};
 	std::vector<int> x = {1,2,3,4,5,6,7,8,9,10,11,12};
 	std::vector<int> y = {4,1,3,2,16,9,10,14,8,7};
 	print(arr);
 	maxHeapify(arr, 1);
 	print(arr);
-	
+
 	std::cout<<std::endl;
+
 	print(y);
 	buildMaxHeap(y);
 	print(y);
+
+	std::cout<<std::endl;
+
+	print(y);
+	heapSort(y);
+	print(y);
+
+
 
 	
 	return 0;
