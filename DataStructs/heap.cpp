@@ -83,13 +83,40 @@ void heapSort(std::vector<int> &a){
     }
 }
 
-void maxHeapInsert(){}
 
-void headpExtractMax(){}
 
-void heapIncreaseKey(){}
+int headpExtractMax(std::vector<int> &a){
+	if(a.size() < 1){
+		std::cout<<"Heap Underflow \n";
+		return -1;
+	}
+	int max = a[0];
+	a[0] = a[a.size() - 1];
+	maxHeapify(a,0);
+	return max;
+}
 
-void heapMaximum(){}
+void heapIncreaseKey(std::vector<int> &a, int index, int key){
+	if(key < index){
+		std::cout<< "Error: New key is smaller than current key\n";
+		return;
+	}
+
+	a[index] = key;
+	while( index > 0 && a[parent(index) < a[index]]){
+		std::swap(a[index], a[parent(index)]);
+		index = parent(index);
+	}
+}
+
+int heapMaximum(std::vector<int> a){
+	return a[0];
+}
+void maxHeapInsert(std::vector<int> &a, int key){
+	a.push_back(key);
+	heapIncreaseKey(a,a.size()-1, key);
+}
+
 
 
 int main(int argc, char const *argv[])
@@ -113,6 +140,20 @@ int main(int argc, char const *argv[])
 	heapSort(y);
 	print(y);
 
+	print(y);
+	std::cout<<headpExtractMax(y)<<std::endl;
+	print(y);
+
+	std::cout<<std::endl;
+
+	print(y);
+	heapIncreaseKey(y, 9, 16);
+	print(y);
+
+	std::cout<<std::endl;
+	print(y);
+	maxHeapInsert(y, 10000);
+	print(y);
 
 
 	
